@@ -11,8 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 public class Helper {
-    private static Dialog mDialog;
-    private static ProgressDialog mProgressDialog;
+    public static Dialog mDialog;
+    public static ProgressDialog mProgressDialog;
 
     public static String getPath(Context context, Uri uri){
         String[] projection = {MediaStore.Images.Media.DATA};
@@ -36,13 +36,13 @@ public class Helper {
         mDialog.show();
     }
 
-    private static void dismissDialog(){
+    public static void dismissDialog(){
         if (mDialog!=null && mDialog.isShowing()){
             mDialog.dismiss();
         }
     }
 
-    private static void initProgressDialog(Context context){
+    public static void initProgressDialog(Context context){
         mProgressDialog = new ProgressDialog(context);
         mProgressDialog.setMessage(context.getString(R.string.loading));
         mProgressDialog.setCancelable(false);
@@ -50,11 +50,11 @@ public class Helper {
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
     }
 
-    private static void setProgress(int i){
+    public static void setProgress(int i){
         mProgressDialog.setProgress(i);
     }
 
-    private static void dismissProgressDialog(){
+    public static void dismissProgressDialog(){
         if (mProgressDialog!= null && mProgressDialog.isShowing()){
             mProgressDialog.dismiss();
         }
