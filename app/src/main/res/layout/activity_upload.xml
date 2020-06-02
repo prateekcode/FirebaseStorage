@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/image_view"
@@ -13,81 +13,88 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_centerHorizontal="true"
         app:srcCompat="@drawable/workeasily" />
 
     <TextView
         android:id="@+id/text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_below="@id/imageView3"
+        android:layout_marginTop="10dp"
         android:autoLink="web"
         android:text="http://www.example.com/?id=UAOJNVKBMQUGPYZKCQZRZKJEXRCRXMRSMF"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/btn_meta_data"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginEnd="16dp"
-        android:text="Upload Memory"
-        android:background="@color/colorPrimaryDark"
-        android:padding="16dp"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_update_metadata"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/text_view"
-        tools:layout_editor_absoluteY="363dp" />
+        android:layout_above="@+id/zone_bottom"
+        android:weightSum="2"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_update_metadata"
-        android:layout_width="wrap_content"
+        <Button
+            style="?android:attr/button"
+            android:id="@+id/button_upload_from_memory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:padding="16dp"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:text="@string/upload_from_memory"/>
+
+        <Button
+            style="?android:attr/button"
+            android:id="@+id/button_upload_resume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:padding="16dp"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:visibility="gone"
+            android:text="@string/upload_resume"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/zone_bottom"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:background="@color/colorPrimaryDark"
-        android:padding="16dp"
-        android:text="Resume Upload"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/text_view"
-        tools:layout_editor_absoluteY="363dp" />
+        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true"
+        android:weightSum="2"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_download_memory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:padding="16dp"
-        android:text="Stream Upload"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_update_metadata"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="@+id/btn_meta_data"
-        tools:layout_editor_absoluteY="465dp" />
+        <Button
+            style="?android:attr/button"
+            android:id="@+id/button_upload_from_stream"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:padding="16dp"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:text="@string/upload_from_stream"/>
 
-    <Button
-        android:id="@+id/btn_download_file"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:background="@color/colorPrimaryDark"
-        android:padding="16dp"
-        android:text="File upload"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_download_memory"
-        app:layout_constraintStart_toStartOf="@+id/btn_download_memory"
-        app:layout_constraintTop_toBottomOf="@+id/btn_download_memory" />
+        <Button
+            style="?android:attr/button"
+            android:id="@+id/button_upload_from_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:padding="16dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:text="@string/upload_from_file"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</RelativeLayout>
