@@ -34,23 +34,23 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <Button
-        android:id="@+id/btn_upload_memory"
+        android:id="@+id/btn_meta_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginEnd="16dp"
+        android:text="Upload Memory"
         android:background="@color/colorPrimaryDark"
         android:padding="16dp"
-        android:text="Upload Memory"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_resume_upload"
+        app:layout_constraintEnd_toStartOf="@+id/btn_update_metadata"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/text_view"
         tools:layout_editor_absoluteY="363dp" />
 
     <Button
-        android:id="@+id/btn_resume_upload"
+        android:id="@+id/btn_update_metadata"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
@@ -63,7 +63,7 @@
         tools:layout_editor_absoluteY="363dp" />
 
     <Button
-        android:id="@+id/btn_stream_upload"
+        android:id="@+id/btn_download_memory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
@@ -71,22 +71,23 @@
         android:text="Stream Upload"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_upload_file"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_upload_memory"
-        tools:layout_editor_absoluteY="476dp" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_update_metadata"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="@+id/btn_meta_data"
+        tools:layout_editor_absoluteY="465dp" />
 
     <Button
-        android:id="@+id/btn_upload_file"
+        android:id="@+id/btn_download_file"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
+        android:layout_marginTop="44dp"
         android:background="@color/colorPrimaryDark"
         android:padding="16dp"
         android:text="File upload"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_resume_upload"
-        tools:layout_editor_absoluteY="476dp" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_download_memory"
+        app:layout_constraintStart_toStartOf="@+id/btn_download_memory"
+        app:layout_constraintTop_toBottomOf="@+id/btn_download_memory" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
