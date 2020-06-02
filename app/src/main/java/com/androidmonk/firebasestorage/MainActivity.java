@@ -49,16 +49,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onRequestPermissionsResult(final int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode){
+        switch (requestCode) {
             case RC_STORAGE_PERMS1:
             case RC_STORAGE_PERMS2:
-                if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    if (requestCode == RC_STORAGE_PERMS1){
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (requestCode == RC_STORAGE_PERMS1) {
                         startActivity(new Intent(this, UploadActivity.class));
-                    }else {
+                    } else {
                         startActivity(new Intent(this, DownloadActivity.class));
                     }
-                }else {
+                } else {
                     AlertDialog.Builder alert = new AlertDialog.Builder(this);
                     alert.setMessage("You need to allow Permission");
                     alert.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
@@ -80,19 +80,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode){
+        switch (requestCode) {
             case RC_STORAGE_PERMS1:
             case RC_STORAGE_PERMS2:
                 hasWriteExtStorePMS = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-                if (hasWriteExtStorePMS == PackageManager.PERMISSION_GRANTED){
-
+                if (hasWriteExtStorePMS == PackageManager.PERMISSION_GRANTED) {
+                    if (requestCode == RC_STORAGE_PERMS1) {
+                        startActivity(new Intent(this, UploadActivity.class));
+                    } else {
+                        startActivity(new Intent(this, DownloadActivity.class));
                     }
+
+                }else {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, RC_STORAGE_PERMS1);
+                }
                 break;
         }
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btn_upload:
+                hasWriteExtStorePMS = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                if (hasWriteExtStorePMS == PackageManager.PERMISSION_GRANTED){
+                    startActivity(new Intent(this, UploadActivity.class));
+                }else {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, RC_STORAGE_PERMS1);
+                }
+                break;
+            case R.id.btn_download:
+                hasWriteExtStorePMS = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                if (hasWriteExtStorePMS == PackageManager.PERMISSION_GRANTED){
+                    startActivity(new Intent(this, DownloadActivity.class));
+                }else {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, RC_STORAGE_PERMS1);
+                }
+                break;
+            case R.id.btn_cloud_storage:
+                startActivity(new Intent(this, CloudStorageActivity.class));
+                break;
+        }
 
     }
 }
