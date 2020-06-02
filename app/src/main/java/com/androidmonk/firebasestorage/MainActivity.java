@@ -1,9 +1,12 @@
 package com.androidmonk.firebasestorage;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final String TAG = "CLICKED_BUTTON";
     private static final int RC_STORAGE_PERMS1 = 101;
     private static final int RC_STORAGE_PERMS2 = 102;
+    private int hasWriteExtStorePMS;
 
     private ImageView headerImageView;
     private Button uploadBtn, downloadBtn, cloudStorageBtn;
@@ -66,7 +70,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             startActivityForResult(intent, requestCode);
                         }
                     });
+                    alert.setCancelable(false);
+                    alert.show();
                 }
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case RC_STORAGE_PERMS1:
+            case RC_STORAGE_PERMS2:
+                hasWriteExtStorePMS = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                if (hasWriteExtStorePMS == PackageManager.PERMISSION_GRANTED){
+
+                    }
+                break;
         }
     }
 
