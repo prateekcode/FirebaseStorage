@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             intent.setData(Uri.parse("package:" + getPackageName()));
                             startActivityForResult(intent, requestCode);
                         }
-                    })
+                    });
                 }
         }
     }
